@@ -3,7 +3,7 @@
 # @Author: LiSnB
 # @Date:   2015-04-26 18:58:20
 # @Last Modified by:   LiSnB
-# @Last Modified time: 2015-04-26 19:04:09
+# @Last Modified time: 2015-04-27 16:03:55
 
 
 """
@@ -34,7 +34,7 @@ class Solution:
             sums.append(s)
         re = []
         for query in queries:
-            if query[0] == 0:
+            if query.start == 0:
                 re.append(sums[query[1]])
             else:
                 re.append(sums[query[1]]-sums[query[0]-1])
