@@ -1,32 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Author: LiSnB
-# @Date:   2015-04-28 20:57:02
+# @Author: lisnb
+# @Date:   2015-04-28 23:39:09
 # @Last Modified by:   lisnb
-# @Last Modified time: 2015-04-28 23:38:43
-
-
+# @Last Modified time: 2015-04-28 23:40:07
 class Solution:
     """
-    @param A : a list of integers
+    @param A : an integer ratated sorted array and duplicates are allowed
     @param target : an integer to be searched
-    @return : an integer
+    @return : a boolean
     """
     def search(self, A, target):
-        # write your code here
         return self.binarysearch(A, target, 0, len(A)-1)
 
 
     def binarysearch(self, A, target, b, e):
         if e<b:
-            return -1
+            return False
         if e==b:
-            return b if A[b]==target else -1
+            return  A[b]==target
 
         mid = b + (e-b)/2
 
         if A[mid]==target:
-            return mid
+            return True
         if A[b]<A[e]:
             if A[mid] > target:
                 return self.binarysearch(A, target, b, mid -1)
@@ -34,9 +31,9 @@ class Solution:
                 return self.binarysearch(A, target, mid+1, e)
         else:
             if target == A[b]:
-                return b
+                return True
             if target == A[e]:
-                return e 
+                return True 
             if A[mid]>A[b]:
                 if target>A[mid]:
                     return self.binarysearch(A, target, mid+1,e-1)
@@ -53,9 +50,6 @@ class Solution:
                         return self.binarysearch(A, target, b+1, mid-1)
                     else:
                         return self.binarysearch(A, target, mid+1, e-1)
-
-
-
 
 
 if __name__ == '__main__':
